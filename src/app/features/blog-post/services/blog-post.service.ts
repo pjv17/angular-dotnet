@@ -4,11 +4,15 @@ import { Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment.development';
+import { UpdateBlogPost } from '../models/update-blog-post.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogPostService {
+  getAllCategories(): Observable<import("../../category/models/category-model").Category[]> {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http:HttpClient) { }
 
@@ -18,6 +22,22 @@ export class BlogPostService {
 
   getAllBlogPosts(): Observable<BlogPost[]> {
     return this.http.get<BlogPost[]>(`${environment.apiBaseUrl}/api/blogposts`);
+  }
+
+  getBlogPostById(id: string): Observable<BlogPost> {
+    return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}`);
+  }
+
+  getBlogPostByUrlHandle(urlHandle: string): Observable<BlogPost> {
+    return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${urlHandle}`);
+  }
+
+  updateBlogPost(id: string, updatedBlogPost: UpdateBlogPost): Observable<BlogPost> {
+    return this.http.put<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}`, updatedBlogPost);
+  }
+
+  deleteBlogPost(id: string): Observable<BlogPost> {
+    return this.http.delete<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}`);
   }
 
 }

@@ -13,6 +13,7 @@
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Is Visible?</th>
+                    <th>Categories</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -21,7 +22,12 @@
                     <td>{{blogPost.title}}</td>
                     <td>{{blogPost.shortDescription}}</td>
                     <td>{{blogPost.isVisible}}</td>
-                    <td></td>
+                    <td>
+                        <span *ngFor="let category of blogPost.categories" class="me-2">
+                            <span class="badge bg-secondary">{{category.name}}</span>
+                        </span>
+                    </td>
+                    <td><a class="btn btn-light" [routerLink]="['/admin/blogposts', blogPost.id]">Edit</a></td>
                 </tr>
             </tbody>
         </table>
