@@ -24,6 +24,7 @@
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "marked": "^12.0.2",
+    "ngx-cookie-service": "^18.0.0",
     "ngx-markdown": "^18.0.0",
     "prismjs": "^1.28.0",
     "rxjs": "~7.8.0",
